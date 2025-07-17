@@ -4,11 +4,10 @@ import { Input } from '../ui/input'
 import { Card } from '../ui/card'
 
 interface LibraryViewProps {
-  setCurrentTrack: (track: any) => void
-  setIsPlaying: (playing: boolean) => void
+  playTrack: (track: any, trackList?: any[]) => void
 }
 
-export function LibraryView({ setCurrentTrack, setIsPlaying }: LibraryViewProps) {
+export function LibraryView({ playTrack }: LibraryViewProps) {
   const libraryItems = [
     { 
       id: 1, 
@@ -76,29 +75,28 @@ export function LibraryView({ setCurrentTrack, setIsPlaying }: LibraryViewProps)
     },
   ]
 
-  const handlePlayTrack = (track: any) => {
-    setCurrentTrack(track)
-    setIsPlaying(true)
+  const handlePlayTrack = (track: any, trackList?: any[]) => {
+    playTrack(track, trackList)
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-white">Your Library</h1>
-        <div className="flex items-center space-x-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 lg:mb-8 space-y-4 lg:space-y-0">
+        <h1 className="text-2xl lg:text-3xl font-bold text-white">Your Library</h1>
+        <div className="flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-spotify-light-gray w-4 h-4" />
             <Input
               type="text"
               placeholder="Search in Your Library"
-              className="pl-10 bg-spotify-gray text-white placeholder-spotify-light-gray border-none rounded-md h-10 w-64"
+              className="pl-10 bg-spotify-gray text-white placeholder-spotify-light-gray border-none rounded-md h-10 w-full lg:w-64"
             />
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="text-spotify-light-gray hover:text-white"
+            className="text-spotify-light-gray hover:text-white justify-start lg:justify-center"
           >
             Recently added
           </Button>
@@ -106,7 +104,7 @@ export function LibraryView({ setCurrentTrack, setIsPlaying }: LibraryViewProps)
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex space-x-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-4 lg:mb-6">
         <Button
           variant="outline"
           size="sm"
@@ -138,38 +136,38 @@ export function LibraryView({ setCurrentTrack, setIsPlaying }: LibraryViewProps)
       </div>
 
       {/* Library Items */}
-      <div className="space-y-2">
+      <div className="space-y-1 lg:space-y-2">
         {libraryItems.map((item) => (
           <div
             key={item.id}
             className="flex items-center p-3 rounded-lg hover:bg-spotify-gray transition-colors cursor-pointer group"
-            onClick={() => handlePlayTrack(item)}
+            onClick={() => handlePlayTrack(item, libraryItems)}
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center text-2xl mr-4">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center text-xl lg:text-2xl mr-3 lg:mr-4 flex-shrink-0">
               {item.image}
             </div>
-            <div className="flex-1">
-              <h3 className="text-white font-semibold">{item.title}</h3>
-              <p className="text-spotify-light-gray text-sm">
+            <div className="flex-1 min-w-0">
+              <h3 className="text-white font-semibold text-sm lg:text-base truncate">{item.title}</h3>
+              <p className="text-spotify-light-gray text-xs lg:text-sm">
                 <span className="capitalize">{item.type}</span> • {item.count}
               </p>
             </div>
-            <div className="text-spotify-light-gray text-sm mr-4">
+            <div className="hidden lg:block text-spotify-light-gray text-sm mr-4">
               {item.lastPlayed}
             </div>
-            <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="flex items-center space-x-1 lg:space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <Button
                 size="sm"
-                className="bg-spotify-green hover:bg-spotify-green-hover text-black rounded-full w-10 h-10"
+                className="bg-spotify-green hover:bg-spotify-green-hover text-black rounded-full w-8 h-8 lg:w-10 lg:h-10"
               >
-                <Play className="w-4 h-4 fill-current" />
+                <Play className="w-3 h-3 lg:w-4 lg:h-4 fill-current" />
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-spotify-light-gray hover:text-white w-10 h-10"
+                className="text-spotify-light-gray hover:text-white w-8 h-8 lg:w-10 lg:h-10"
               >
-                <MoreHorizontal className="w-4 h-4" />
+                <MoreHorizontal className="w-3 h-3 lg:w-4 lg:h-4" />
               </Button>
             </div>
           </div>

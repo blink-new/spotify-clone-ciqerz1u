@@ -13,6 +13,12 @@ module.exports = {
   			ring: 'hsl(var(--ring))',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			'spotify-green': 'hsl(var(--spotify-green))',
+  			'spotify-green-hover': 'hsl(var(--spotify-green-hover))',
+  			'spotify-black': 'hsl(var(--spotify-black))',
+  			'spotify-dark-gray': 'hsl(var(--spotify-dark-gray))',
+  			'spotify-gray': 'hsl(var(--spotify-gray))',
+  			'spotify-light-gray': 'hsl(var(--spotify-light-gray))',
   			primary: {
   				'50': '#f0f9ff',
   				'100': '#e0f2fe',

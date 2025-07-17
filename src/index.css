@@ -99,32 +99,3 @@
   }
 }
 
-@layer utilities {
-  .spotify-green {
-    color: hsl(var(--spotify-green));
-  }
-
-  .bg-spotify-green {
-    background-color: hsl(var(--spotify-green));
-  }
-
-  .hover\:bg-spotify-green-hover:hover {
-    background-color: hsl(var(--spotify-green-hover));
-  }
-
-  .bg-spotify-black {
-    background-color: hsl(var(--spotify-black));
-  }
-
-  .bg-spotify-dark-gray {
-    background-color: hsl(var(--spotify-dark-gray));
-  }
-
-  .bg-spotify-gray {
-    background-color: hsl(var(--spotify-gray));
-  }
-
-  .text-spotify-light-gray {
-    color: hsl(var(--spotify-light-gray));
-  }
-}
